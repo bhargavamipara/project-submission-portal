@@ -25,6 +25,7 @@ import BookMeal from "@/pages/student/BookMeal";
 import MyBookings from "@/pages/student/MyBookings";
 
 import NotFound from "@/pages/NotFound";
+import Diagrams from "@/pages/Diagrams";
 
 const queryClient = new QueryClient();
 
@@ -78,6 +79,9 @@ function AppRoutes() {
       <Route path="/student" element={<StudentDashboard />} />
       <Route path="/student/book" element={<BookMeal />} />
       <Route path="/student/bookings" element={<MyBookings />} />
+
+      {/* Diagrams Page for Academic Submission */}
+      <Route path="/diagrams" element={<Diagrams />} />
 
       {/* Catch-all */}
       <Route path="*" element={<NotFound />} />
