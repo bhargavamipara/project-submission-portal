@@ -217,23 +217,32 @@ const Slide7 = () => (
       <div className="bg-blue-800 text-white px-10 py-4">
         <div className="text-xs opacity-70">Darshan University • #2304CS600 (Capstone Project / Internship)</div>
       </div>
-      <div className="flex-1 p-10">
-        <h2 className="text-3xl font-bold text-blue-900 mb-6">Module List</h2>
+      <div className="flex-1 p-10" style={{ backgroundColor: '#1a1a2e' }}>
+        <h2 className="text-3xl font-bold text-white mb-8">Module List</h2>
         <div className="grid grid-cols-3 gap-6">
           {[
-            { title: "🔐 Authentication Module", desc: "Login, role-based routing, session management", color: "bg-blue-50 border-blue-300" },
-            { title: "👨‍💼 Admin Dashboard", desc: "Overview stats, quick actions, activity feed", color: "bg-green-50 border-green-300" },
-            { title: "👥 User Management", desc: "CRUD users, assign roles, search & filter", color: "bg-yellow-50 border-yellow-300" },
-            { title: "🍔 Menu Management", desc: "Add/edit menu items, toggle availability", color: "bg-orange-50 border-orange-300" },
-            { title: "📊 Reports & Export", desc: "Filter reports, export PDF/Excel/CSV", color: "bg-red-50 border-red-300" },
-            { title: "✅ Attendance Marking", desc: "Staff marks present/absent for bookings", color: "bg-teal-50 border-teal-300" },
-            { title: "📅 Meal Booking", desc: "Students book meals by date & type", color: "bg-purple-50 border-purple-300" },
-            { title: "📋 My Bookings", desc: "View, filter, and cancel bookings", color: "bg-pink-50 border-pink-300" },
-            { title: "🎓 Student Dashboard", desc: "Personal stats, recent bookings overview", color: "bg-indigo-50 border-indigo-300" },
+            { icon: "🔐", title: "Authentication Module", desc: "Login / Signup with role-based routing" },
+            { icon: "👨‍💼", title: "Admin Dashboard", desc: "Overview stats, quick actions, activity feed" },
+            { icon: "👥", title: "User Management", desc: "CRUD users, assign roles, search & filter" },
+            { icon: "🍔", title: "Menu Management", desc: "Add/edit menu items, toggle availability" },
+            { icon: "📊", title: "Reports & Export", desc: "Filter reports, export PDF/Excel/CSV" },
+            { icon: "✅", title: "Attendance Marking", desc: "Staff marks present/absent for bookings" },
+            { icon: "📅", title: "Meal Booking", desc: "Students book meals by date & type" },
+            { icon: "📋", title: "My Bookings", desc: "View, filter, and cancel bookings" },
+            { icon: "🎓", title: "Student Dashboard", desc: "Personal stats, recent bookings overview" },
           ].map((mod, i) => (
-            <div key={i} className={`${mod.color} border-2 rounded-xl p-5`}>
-              <h4 className="font-bold text-gray-800 mb-1">{mod.title}</h4>
-              <p className="text-sm text-gray-600">{mod.desc}</p>
+            <div
+              key={i}
+              className="rounded-2xl p-6 text-center flex flex-col items-center justify-center"
+              style={{
+                backgroundColor: '#16213e',
+                border: '1px solid #1a1a4e',
+                minHeight: '140px',
+              }}
+            >
+              <span className="text-4xl mb-3">{mod.icon}</span>
+              <h4 className="font-bold text-white text-lg mb-1">{mod.title}</h4>
+              <p className="text-sm text-gray-400">{mod.desc}</p>
             </div>
           ))}
         </div>
