@@ -1,11 +1,16 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { User, Session } from '@supabase/supabase-js';
-import { supabase } from '@/integrations/supabase/client';
+import { api, setToken, removeToken, getStoredUser, setStoredUser, removeStoredUser } from '@/lib/api';
 import { AppRole } from '@/types/database';
 
+interface AuthUser {
+  id: number;
+  full_name: string;
+  email: string;
+  role: AppRole;
+}
+
 interface AuthContextType {
-  user: User | null;
-  session: Session | null;
+  user: AuthUser | null;
   role: AppRole | null;
   loading: boolean;
   signUp: (email: string, password: string, fullName: string, role: AppRole) => Promise<{ error: Error | null }>;
@@ -16,92 +21,56 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [session, setSession] = useState<Session | null>(null);
+  const [user, setUser] = useState<AuthUser | null>(null);
   const [role, setRole] = useState<AppRole | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const fetchUserRole = async (userId: string) => {
-    try {
-      const { data, error } = await supabase
-        .from('user_roles')
-        .select('role')
-        .eq('user_id', userId)
-        .single();
-
-      if (error) {
-        console.error('Error fetching role:', error);
-        return null;
-      }
-      return data?.role as AppRole;
-    } catch (error) {
-      console.error('Error fetching role:', error);
-      return null;
-    }
-  };
-
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        setSession(session);
-        setUser(session?.user ?? null);
-
-        if (session?.user) {
-          const userRole = await fetchUserRole(session.user.id);
-          setRole(userRole);
-        } else {
-          setRole(null);
-        }
-        setLoading(false);
-      }
-    );
-
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-
-      if (session?.user) {
-        const userRole = await fetchUserRole(session.user.id);
-        setRole(userRole);
-      }
-      setLoading(false);
-    });
-
-    return () => subscription.unsubscribe();
+    // Restore user from localStorage
+    const stored = getStoredUser();
+    if (stored) {
+      setUser(stored);
+      setRole(stored.role);
+    }
+    setLoading(false);
   }, []);
 
   const signUp = async (email: string, password: string, fullName: string, role: AppRole) => {
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: window.location.origin,
-        data: {
-          full_name: fullName,
-          role: role,
-        },
-      },
-    });
-    return { error };
+    try {
+      const data = await api.post('/auth/register', {
+        full_name: fullName,
+        email,
+        password,
+        role,
+      });
+      return { error: null };
+    } catch (error: any) {
+      return { error };
+    }
   };
 
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    return { error };
+    try {
+      const data = await api.post('/auth/login', { email, password });
+      setToken(data.token);
+      setStoredUser(data.user);
+      setUser(data.user);
+      setRole(data.user.role);
+      return { error: null };
+    } catch (error: any) {
+      return { error };
+    }
   };
 
   const signOut = async () => {
-    await supabase.auth.signOut();
+    removeToken();
+    removeStoredUser();
     setUser(null);
-    setSession(null);
     setRole(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, session, role, loading, signUp, signIn, signOut }}>
+    <AuthContext.Provider value={{ user, role, loading, signUp, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,29 +1,13 @@
 import { useLocation, Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarHeader,
-  SidebarFooter,
-  useSidebar,
+  Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
+  SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarHeader, SidebarFooter, useSidebar,
 } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
 import {
-  LayoutDashboard,
-  Users,
-  UtensilsCrossed,
-  FileBarChart,
-  ClipboardCheck,
-  CalendarPlus,
-  CalendarDays,
-  LogOut,
-  ChefHat,
+  LayoutDashboard, Users, UtensilsCrossed, FileBarChart, ClipboardCheck,
+  CalendarPlus, CalendarDays, LogOut, ChefHat,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -52,7 +36,6 @@ export function AppSidebar() {
   const collapsed = state === 'collapsed';
 
   const routes = role === 'admin' ? adminRoutes : role === 'staff' ? staffRoutes : studentRoutes;
-
   const roleLabel = role === 'admin' ? 'Admin Panel' : role === 'staff' ? 'Staff Panel' : 'Student Portal';
   const roleColor = role === 'admin' ? 'gradient-primary' : role === 'staff' ? 'gradient-secondary' : 'gradient-accent';
 
@@ -81,15 +64,8 @@ export function AppSidebar() {
                 const isActive = location.pathname === item.url;
                 return (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton
-                      asChild
-                      isActive={isActive}
-                      tooltip={item.title}
-                    >
-                      <Link to={item.url}>
-                        <item.icon className="h-4 w-4" />
-                        <span>{item.title}</span>
-                      </Link>
+                    <SidebarMenuButton asChild isActive={isActive} tooltip={item.title}>
+                      <Link to={item.url}><item.icon className="h-4 w-4" /><span>{item.title}</span></Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );
@@ -107,14 +83,9 @@ export function AppSidebar() {
               <p className="text-xs text-muted-foreground capitalize">{role}</p>
             </div>
           )}
-          <Button
-            variant="ghost"
-            size={collapsed ? 'icon' : 'sm'}
-            onClick={signOut}
-            className="w-full justify-start text-destructive hover:text-destructive hover:bg-destructive/10"
-          >
-            <LogOut className="h-4 w-4" />
-            {!collapsed && <span className="ml-2">Sign Out</span>}
+          <Button variant="ghost" size={collapsed ? 'icon' : 'sm'} onClick={signOut}
+            className="w-full justify-start text-destructive hover:text-destructive hover:bg-destructive/10">
+            <LogOut className="h-4 w-4" />{!collapsed && <span className="ml-2">Sign Out</span>}
           </Button>
         </div>
       </SidebarFooter>
