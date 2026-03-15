@@ -60,32 +60,24 @@ function RoleBasedRedirect() {
 function AppRoutes() {
   return (
     <Routes>
-      {/* Root redirect based on role */}
       <Route path="/" element={<RoleBasedRedirect />} />
-
-      {/* Auth */}
       <Route path="/login" element={<Login />} />
 
-      {/* Admin Routes */}
       <Route path="/admin" element={<AdminDashboard />} />
       <Route path="/admin/users" element={<UserManagement />} />
       <Route path="/admin/menu" element={<MenuManagement />} />
       <Route path="/admin/reports" element={<Reports />} />
 
-      {/* Staff Routes */}
       <Route path="/staff" element={<StaffDashboard />} />
       <Route path="/staff/attendance" element={<Attendance />} />
 
-      {/* Student Routes */}
       <Route path="/student" element={<StudentDashboard />} />
       <Route path="/student/book" element={<BookMeal />} />
       <Route path="/student/bookings" element={<MyBookings />} />
 
-      {/* Diagrams Page for Academic Submission */}
       <Route path="/diagrams" element={<Diagrams />} />
       <Route path="/presentation" element={<Presentation />} />
 
-      {/* Catch-all */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

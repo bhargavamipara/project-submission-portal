@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
+import { api } from '@/lib/api';
 import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { StatsCard } from '@/components/shared/StatsCard';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -15,32 +15,26 @@ export default function StaffDashboard() {
     markedAbsent: 0,
   });
 
-  useEffect(() => {
-    fetchStats();
-  }, []);
+  useEffect(() => { fetchStats(); }, []);
 
   const fetchStats = async () => {
     try {
       const today = format(new Date(), 'yyyy-MM-dd');
 
-      const { data: bookings } = await supabase
-        .from('meal_bookings')
-        .select('id')
-        .eq('date', today);
+      const [bookingsData, attendanceData] = await Promise.all([
+        api.get('/bookings/user/all'),
+        api.get('/attendance'),
+      ]);
 
-      const { data: attendance } = await supabase
-        .from('attendance')
-        .select(`
-          status,
-          meal_bookings!inner (date)
-        `)
-        .eq('meal_bookings.date', today);
+      const bookings = bookingsData.bookings || bookingsData || [];
+      const attendance = attendanceData.attendance || attendanceData || [];
 
-      const present = attendance?.filter((a) => a.status === 'present').length || 0;
-      const absent = attendance?.filter((a) => a.status === 'absent').length || 0;
+      const todayBookings = bookings.filter((b: any) => b.date === today);
+      const present = attendance.filter((a: any) => a.status === 'present').length;
+      const absent = attendance.filter((a: any) => a.status === 'absent').length;
 
       setStats({
-        todayBookings: bookings?.length || 0,
+        todayBookings: todayBookings.length,
         markedPresent: present,
         markedAbsent: absent,
       });
@@ -54,50 +48,24 @@ export default function StaffDashboard() {
       <div className="space-y-6">
         <div>
           <h1 className="text-3xl font-bold text-foreground">Staff Dashboard</h1>
-          <p className="text-muted-foreground">
-            Welcome! Today is {format(new Date(), 'EEEE, MMMM d, yyyy')}
-          </p>
+          <p className="text-muted-foreground">Welcome! Today is {format(new Date(), 'EEEE, MMMM d, yyyy')}</p>
         </div>
 
-        {/* Stats Grid */}
         <div className="grid gap-4 md:grid-cols-3">
-          <StatsCard
-            title="Today's Bookings"
-            value={stats.todayBookings}
-            icon={<CalendarCheck className="h-6 w-6" />}
-            gradient="primary"
-            description="Total meal bookings"
-          />
-          <StatsCard
-            title="Marked Present"
-            value={stats.markedPresent}
-            icon={<UserCheck className="h-6 w-6" />}
-            gradient="success"
-            description="Students present"
-          />
-          <StatsCard
-            title="Marked Absent"
-            value={stats.markedAbsent}
-            icon={<UserX className="h-6 w-6" />}
-            gradient="warning"
-            description="Students absent"
-          />
+          <StatsCard title="Today's Bookings" value={stats.todayBookings} icon={<CalendarCheck className="h-6 w-6" />} gradient="primary" description="Total meal bookings" />
+          <StatsCard title="Marked Present" value={stats.markedPresent} icon={<UserCheck className="h-6 w-6" />} gradient="success" description="Students present" />
+          <StatsCard title="Marked Absent" value={stats.markedAbsent} icon={<UserX className="h-6 w-6" />} gradient="warning" description="Students absent" />
         </div>
 
-        {/* Quick Action */}
         <Card className="card-shadow">
           <CardHeader>
             <CardTitle>Mark Attendance</CardTitle>
-            <CardDescription>
-              Record student attendance for meals
-            </CardDescription>
+            <CardDescription>Record student attendance for meals</CardDescription>
           </CardHeader>
           <CardContent>
             <Link to="/staff/attendance">
               <Button className="w-full sm:w-auto gradient-secondary hover:opacity-90">
-                <ClipboardCheck className="h-4 w-4 mr-2" />
-                Go to Attendance Page
-                <ArrowRight className="h-4 w-4 ml-2" />
+                <ClipboardCheck className="h-4 w-4 mr-2" />Go to Attendance Page<ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             </Link>
           </CardContent>
