@@ -1,8 +1,123 @@
-# Welcome to your Lovable project
+# 🍽️ DineFlow - Dining Hall Management System
 
-## Project info
+A full-stack web application for managing university dining hall operations with role-based access control.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Architecture
+
+```
+React (Frontend) → Express REST API (Backend) → MySQL Database
+```
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React.js, Tailwind CSS, shadcn/ui, Vite |
+| Backend | Node.js, Express.js |
+| Database | MySQL |
+| Authentication | JWT (jsonwebtoken) + bcryptjs |
+| Reports | jsPDF, SheetJS (xlsx) |
+
+## Project Structure
+
+```
+├── server/                 # Backend (Node.js + Express)
+│   ├── config/
+│   │   ├── db.js           # MySQL connection pool
+│   │   └── schema.sql      # Database schema
+│   ├── controllers/        # Route handlers
+│   ├── middleware/          # JWT auth & role middleware
+│   ├── models/             # Database models
+│   ├── routes/             # API route definitions
+│   ├── server.js           # Express app entry point
+│   └── package.json
+│
+├── src/                    # Frontend (React)
+│   ├── components/         # Reusable UI components
+│   ├── hooks/              # Custom hooks (useAuth)
+│   ├── lib/                # API utility (api.ts)
+│   ├── pages/              # Page components
+│   │   ├── auth/           # Login page
+│   │   ├── admin/          # Admin dashboard, users, menu, reports
+│   │   ├── staff/          # Staff dashboard, attendance
+│   │   └── student/        # Student dashboard, book meal, bookings
+│   └── types/              # TypeScript type definitions
+```
+
+## Setup Instructions
+
+### 1. Database Setup (MySQL)
+
+```bash
+mysql -u root -p
+source server/config/schema.sql
+```
+
+### 2. Backend Setup
+
+```bash
+cd server
+npm install
+cp .env.example .env
+# Edit .env with your MySQL credentials and JWT secret
+npm run dev
+```
+
+Server runs on `http://localhost:5000`
+
+### 3. Frontend Setup
+
+```bash
+npm install
+npm run dev
+```
+
+Frontend runs on `http://localhost:5173`
+
+## Default Admin Login
+
+- **Email:** admin@dineflow.com
+- **Password:** admin123
+
+## API Endpoints
+
+### Authentication
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/register` | Register new user |
+| POST | `/api/auth/login` | Login user |
+| GET | `/api/auth/me` | Get current user (JWT) |
+
+### Users (Admin Only)
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/users` | Get all users |
+| POST | `/api/users` | Create user |
+| PUT | `/api/users/:id` | Update user |
+| DELETE | `/api/users/:id` | Delete user |
+
+### Menu Items
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/menu` | Get all items (JWT) |
+| POST | `/api/menu` | Create item (Admin) |
+| PUT | `/api/menu/:id` | Update item (Admin) |
+| DELETE | `/api/menu/:id` | Delete item (Admin) |
+
+### Bookings
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/bookings` | Get all (Admin/Staff) |
+| GET | `/api/bookings/user/:id` | Get user bookings (JWT) |
+| POST | `/api/bookings` | Create booking (Student) |
+| DELETE | `/api/bookings/:id` | Cancel booking (JWT) |
+
+### Attendance
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/attendance` | Get all records (Admin/Staff) |
+| POST | `/api/attendance` | Mark attendance (Admin/Staff) |
+| PUT | `/api/attendance/:id` | Update record (Admin/Staff) |
 
 ## How can I edit this code?
 
