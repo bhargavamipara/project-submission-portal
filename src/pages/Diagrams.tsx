@@ -122,10 +122,10 @@ const Diagrams = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold">PK</td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">booking_id</td><td>UUID</td><td className="text-blue-600 font-bold">FK</td></tr>
+                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>INT AUTO_INCREMENT</td><td className="text-yellow-600 font-bold">PK</td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">booking_id</td><td>INT</td><td className="text-blue-600 font-bold">FK</td></tr>
                         <tr className="border-t"><td className="px-3 py-2">status</td><td>ENUM</td><td></td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">marked_by</td><td>UUID</td><td className="text-blue-600 font-bold">FK</td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">marked_by</td><td>INT</td><td className="text-blue-600 font-bold">FK</td></tr>
                         <tr className="border-t"><td className="px-3 py-2">marked_at</td><td>TIMESTAMP</td><td></td></tr>
                       </tbody>
                     </table>
