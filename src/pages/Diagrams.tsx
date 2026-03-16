@@ -194,23 +194,19 @@ const Diagrams = () => {
                     <text x="825" y="333" fontSize="11">marked_at</text>
 
                     {/* Relationships */}
-                    {/* Profiles -> User Roles */}
-                    <line x1="140" y1="230" x2="140" y2="280" stroke="#333" strokeWidth="2"/>
-                    <text x="145" y="260" fontSize="10">1:N</text>
-
-                    {/* Profiles -> Meal Bookings */}
+                    {/* Users -> Bookings */}
                     <line x1="230" y1="140" x2="550" y2="220" stroke="#333" strokeWidth="2"/>
                     <text x="380" y="170" fontSize="10">1:N</text>
 
-                    {/* Menu Items -> Meal Bookings */}
+                    {/* Menu Items -> Bookings */}
                     <line x1="480" y1="160" x2="550" y2="250" stroke="#333" strokeWidth="2"/>
                     <text x="500" y="195" fontSize="10">1:N</text>
 
-                    {/* Meal Bookings -> Attendance */}
+                    {/* Bookings -> Attendance */}
                     <line x1="730" y1="280" x2="800" y2="280" stroke="#333" strokeWidth="2"/>
                     <text x="755" y="270" fontSize="10">1:1</text>
 
-                    {/* Profiles -> Attendance (marked_by) */}
+                    {/* Users -> Attendance (marked_by) */}
                     <path d="M 230 120 Q 500 50 890 200" fill="none" stroke="#333" strokeWidth="2" strokeDasharray="5,5"/>
                     <text x="550" y="80" fontSize="10">marks (FK)</text>
                   </svg>
