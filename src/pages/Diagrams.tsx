@@ -147,16 +147,16 @@ const Diagrams = () => {
               <CardContent>
                 <div className="bg-white p-8 rounded-lg border-2 border-gray-200">
                   <svg viewBox="0 0 1000 600" className="w-full h-auto">
-                    {/* Profiles Entity */}
+                    {/* Users Entity */}
                     <rect x="50" y="50" width="180" height="180" fill="#3B82F6" rx="8"/>
-                    <text x="140" y="80" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16">PROFILES</text>
+                    <text x="140" y="80" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16">USERS</text>
                     <rect x="60" y="95" width="160" height="125" fill="white" rx="4"/>
-                    <text x="75" y="115" fontSize="11" fontWeight="bold">id (PK)</text>
-                    <text x="75" y="132" fontSize="11">email</text>
-                    <text x="75" y="149" fontSize="11">full_name</text>
-                    <text x="75" y="166" fontSize="11">avatar_url</text>
-                    <text x="75" y="183" fontSize="11">created_at</text>
-                    <text x="75" y="200" fontSize="11">updated_at</text>
+                    <text x="75" y="115" fontSize="11" fontWeight="bold">id (PK) INT</text>
+                    <text x="75" y="132" fontSize="11">full_name</text>
+                    <text x="75" y="149" fontSize="11">email</text>
+                    <text x="75" y="166" fontSize="11">password</text>
+                    <text x="75" y="183" fontSize="11">role (ENUM)</text>
+                    <text x="75" y="200" fontSize="11">created_at</text>
 
                     {/* User Roles Entity */}
                     <rect x="50" y="280" width="180" height="140" fill="#22C55E" rx="8"/>
