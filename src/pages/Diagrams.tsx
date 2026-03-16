@@ -66,13 +66,13 @@ const Diagrams = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold">PK</td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">meal_type</td><td>ENUM</td><td></td></tr>
-                        <tr className="border-t"><td className="px-3 py-2">name</td><td>TEXT</td><td></td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">category</td><td>TEXT</td><td></td></tr>
+                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>INT AUTO_INCREMENT</td><td className="text-yellow-600 font-bold">PK</td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">name</td><td>VARCHAR(255)</td><td></td></tr>
+                        <tr className="border-t"><td className="px-3 py-2">meal_type</td><td>ENUM</td><td></td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">category</td><td>VARCHAR(100)</td><td></td></tr>
                         <tr className="border-t"><td className="px-3 py-2">description</td><td>TEXT</td><td></td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">price</td><td>NUMERIC</td><td></td></tr>
-                        <tr className="border-t"><td className="px-3 py-2">quantity</td><td>INTEGER</td><td></td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">price</td><td>DECIMAL(10,2)</td><td></td></tr>
+                        <tr className="border-t"><td className="px-3 py-2">quantity</td><td>INT</td><td></td></tr>
                         <tr className="border-t bg-gray-50"><td className="px-3 py-2">availability</td><td>BOOLEAN</td><td></td></tr>
                         <tr className="border-t"><td className="px-3 py-2">created_at</td><td>TIMESTAMP</td><td></td></tr>
                         <tr className="border-t bg-gray-50"><td className="px-3 py-2">updated_at</td><td>TIMESTAMP</td><td></td></tr>
