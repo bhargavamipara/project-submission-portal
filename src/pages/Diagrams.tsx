@@ -158,27 +158,18 @@ const Diagrams = () => {
                     <text x="75" y="183" fontSize="11">role (ENUM)</text>
                     <text x="75" y="200" fontSize="11">created_at</text>
 
-                    {/* User Roles Entity */}
-                    <rect x="50" y="280" width="180" height="140" fill="#22C55E" rx="8"/>
-                    <text x="140" y="310" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16">USER_ROLES</text>
-                    <rect x="60" y="325" width="160" height="85" fill="white" rx="4"/>
-                    <text x="75" y="345" fontSize="11" fontWeight="bold">id (PK)</text>
-                    <text x="75" y="362" fontSize="11">user_id (FK)</text>
-                    <text x="75" y="379" fontSize="11">role</text>
-                    <text x="75" y="396" fontSize="11">created_at</text>
-
                     {/* Menu Items Entity */}
                     <rect x="300" y="50" width="180" height="220" fill="#F97316" rx="8"/>
                     <text x="390" y="80" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16">MENU_ITEMS</text>
                     <rect x="310" y="95" width="160" height="165" fill="white" rx="4"/>
-                    <text x="325" y="115" fontSize="11" fontWeight="bold">id (PK)</text>
-                    <text x="325" y="132" fontSize="11">meal_type</text>
-                    <text x="325" y="149" fontSize="11">name</text>
+                    <text x="325" y="115" fontSize="11" fontWeight="bold">id (PK) INT</text>
+                    <text x="325" y="132" fontSize="11">name</text>
+                    <text x="325" y="149" fontSize="11">meal_type (ENUM)</text>
                     <text x="325" y="166" fontSize="11">category</text>
                     <text x="325" y="183" fontSize="11">description</text>
-                    <text x="325" y="200" fontSize="11">price</text>
-                    <text x="325" y="217" fontSize="11">quantity</text>
-                    <text x="325" y="234" fontSize="11">availability</text>
+                    <text x="325" y="200" fontSize="11">price DECIMAL</text>
+                    <text x="325" y="217" fontSize="11">quantity INT</text>
+                    <text x="325" y="234" fontSize="11">availability BOOL</text>
 
                     {/* Meal Bookings Entity */}
                     <rect x="550" y="150" width="180" height="200" fill="#A855F7" rx="8"/>
