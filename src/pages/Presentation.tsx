@@ -325,19 +325,18 @@ const Slide9 = () => (
               </tbody>
             </table>
           </div>
-          {/* Menu Items */}
+          {/* Bookings */}
           <div className="border rounded-lg overflow-hidden">
-            <div className="bg-orange-600 text-white px-3 py-1.5 font-bold text-sm">menu_items</div>
+            <div className="bg-purple-600 text-white px-3 py-1.5 font-bold text-sm">bookings</div>
             <table className="w-full text-xs">
               <thead className="bg-gray-100"><tr><th className="px-2 py-1 text-left">Column</th><th className="px-2 py-1 text-left">Type</th><th className="px-2 py-1">Key</th></tr></thead>
               <tbody>
-                <tr className="border-t"><td className="px-2 py-1 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold text-center">PK</td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">meal_type</td><td>ENUM</td><td></td></tr>
-                <tr className="border-t"><td className="px-2 py-1">name</td><td>TEXT</td><td></td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">category</td><td>TEXT</td><td></td></tr>
-                <tr className="border-t"><td className="px-2 py-1">price</td><td>NUMERIC</td><td></td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">quantity</td><td>INTEGER</td><td></td></tr>
-                <tr className="border-t"><td className="px-2 py-1">availability</td><td>BOOLEAN</td><td></td></tr>
+                <tr className="border-t"><td className="px-2 py-1 font-medium">id</td><td>INT AUTO_INCREMENT</td><td className="text-yellow-600 font-bold text-center">PK</td></tr>
+                <tr className="border-t bg-gray-50"><td className="px-2 py-1">user_id</td><td>INT</td><td className="text-blue-600 font-bold text-center">FK</td></tr>
+                <tr className="border-t"><td className="px-2 py-1">menu_item_id</td><td>INT</td><td className="text-blue-600 font-bold text-center">FK</td></tr>
+                <tr className="border-t bg-gray-50"><td className="px-2 py-1">date</td><td>DATE</td><td></td></tr>
+                <tr className="border-t"><td className="px-2 py-1">meal_type</td><td>ENUM</td><td></td></tr>
+                <tr className="border-t bg-gray-50"><td className="px-2 py-1">status</td><td>ENUM</td><td></td></tr>
               </tbody>
             </table>
           </div>
