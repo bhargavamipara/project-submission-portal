@@ -292,20 +292,20 @@ const Slide9 = () => (
         <div className="text-xs opacity-70">Darshan University • #2304CS600 (Capstone Project / Internship)</div>
       </div>
       <div className="flex-1 p-6">
-        <h2 className="text-2xl font-bold text-blue-900 mb-4">Database Schema</h2>
+        <h2 className="text-2xl font-bold text-blue-900 mb-4">Database Schema (MySQL)</h2>
         <div className="grid grid-cols-3 gap-4 text-sm">
-          {/* Profiles */}
+          {/* Users */}
           <div className="border rounded-lg overflow-hidden">
-            <div className="bg-blue-600 text-white px-3 py-1.5 font-bold text-sm">profiles</div>
+            <div className="bg-blue-600 text-white px-3 py-1.5 font-bold text-sm">users</div>
             <table className="w-full text-xs">
               <thead className="bg-gray-100"><tr><th className="px-2 py-1 text-left">Column</th><th className="px-2 py-1 text-left">Type</th><th className="px-2 py-1">Key</th></tr></thead>
               <tbody>
-                <tr className="border-t"><td className="px-2 py-1 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold text-center">PK</td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">email</td><td>TEXT</td><td></td></tr>
-                <tr className="border-t"><td className="px-2 py-1">full_name</td><td>TEXT</td><td></td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">avatar_url</td><td>TEXT</td><td></td></tr>
-                <tr className="border-t"><td className="px-2 py-1">created_at</td><td>TIMESTAMP</td><td></td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">updated_at</td><td>TIMESTAMP</td><td></td></tr>
+                <tr className="border-t"><td className="px-2 py-1 font-medium">id</td><td>INT AUTO_INCREMENT</td><td className="text-yellow-600 font-bold text-center">PK</td></tr>
+                <tr className="border-t bg-gray-50"><td className="px-2 py-1">full_name</td><td>VARCHAR(255)</td><td></td></tr>
+                <tr className="border-t"><td className="px-2 py-1">email</td><td>VARCHAR(255) UNIQUE</td><td></td></tr>
+                <tr className="border-t bg-gray-50"><td className="px-2 py-1">password</td><td>VARCHAR(255)</td><td></td></tr>
+                <tr className="border-t"><td className="px-2 py-1">role</td><td>ENUM</td><td></td></tr>
+                <tr className="border-t bg-gray-50"><td className="px-2 py-1">created_at</td><td>TIMESTAMP</td><td></td></tr>
               </tbody>
             </table>
           </div>
