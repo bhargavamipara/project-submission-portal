@@ -28,13 +28,13 @@ export default function AdminDashboard() {
     try {
       const [usersData, bookingsData, menuData] = await Promise.all([
         api.get('/users'),
-        api.get('/bookings/user/all'),
+        api.get('/bookings'),
         api.get('/menu'),
       ]);
 
       const users = usersData.users || usersData || [];
       const bookings = bookingsData.bookings || bookingsData || [];
-      const menu = menuData.menuItems || menuData || [];
+      const menu = menuData.menu_items || menuData || [];
       const today = format(new Date(), 'yyyy-MM-dd');
 
       setStats({
@@ -50,7 +50,7 @@ export default function AdminDashboard() {
 
   const fetchRecentBookings = async () => {
     try {
-      const data = await api.get('/bookings/user/all');
+      const data = await api.get('/bookings');
       const bookings = data.bookings || data || [];
       setRecentBookings(bookings.slice(0, 5));
     } catch (error) {

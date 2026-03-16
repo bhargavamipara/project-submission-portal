@@ -34,7 +34,7 @@ export default function BookMeal() {
     setLoading(true);
     try {
       const data = await api.get('/menu');
-      const items = data.menuItems || data || [];
+      const items = data.menu_items || data || [];
       setMenuItems(items.filter((i: MenuItem) => i.meal_type === selectedMealType && i.availability));
     } catch (error) {
       console.error('Error fetching menu items:', error);

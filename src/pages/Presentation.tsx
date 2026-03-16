@@ -77,7 +77,7 @@ const Slide3 = () => (
             The system allows students to browse daily menus, book meals in advance, and track their booking history. Staff members can mark attendance for booked students during meal times. Administrators have complete control over user management, menu configuration, and report generation with export capabilities (PDF, Excel, CSV).
           </p>
           <p>
-            Built using <strong>React.js</strong>, <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>, and <strong>Supabase</strong> (PostgreSQL with Row Level Security), the application ensures secure, real-time data management with a modern and responsive user interface.
+            Built using <strong>React.js</strong> for the frontend and <strong>Node.js</strong> with <strong>Express.js</strong> for the backend, connected to a <strong>MySQL</strong> database. Authentication is handled via <strong>JWT</strong> tokens with <strong>bcrypt</strong> password hashing, and role-based middleware ensures secure access control.
           </p>
         </div>
       </div>
@@ -191,13 +191,14 @@ const Slide6 = () => (
             <table className="w-full text-gray-700">
               <tbody>
                 {[
-                  ["Frontend", "React.js, TypeScript, Tailwind CSS"],
-                  ["Backend", "Supabase (PostgreSQL)"],
-                  ["Auth", "Supabase Auth with RLS"],
-                  ["Libraries", "shadcn/ui, jspdf, xlsx, recharts"],
+                  ["Frontend", "React.js, Tailwind CSS, Vite"],
+                  ["Backend", "Node.js, Express.js"],
+                  ["Database", "MySQL with mysql2 driver"],
+                  ["Auth", "JWT (jsonwebtoken) + bcryptjs"],
+                  ["Libraries", "shadcn/ui, jspdf, xlsx, date-fns"],
                   ["Browser", "Chrome / Firefox / Edge"],
                   ["OS", "Windows / macOS / Linux"],
-                  ["IDE", "VS Code / Lovable"],
+                  ["IDE", "VS Code"],
                 ].map(([k, v], i) => (
                   <tr key={i} className="border-b"><td className="py-2 font-semibold">{k}</td><td className="py-2">{v}</td></tr>
                 ))}
@@ -262,8 +263,8 @@ const Slide8 = () => (
         <h2 className="text-3xl font-bold text-blue-900 mb-6">Module Detailing</h2>
         <div className="space-y-5 text-gray-700 text-[15px]">
           <div>
-            <h4 className="font-bold text-blue-800">1. Authentication Module</h4>
-            <p>Handles user login with email/password. Uses Supabase Auth with role-based redirect — Admin → /admin, Staff → /staff, Student → /student. Session persists via JWT tokens. Protected routes guard against unauthorized access.</p>
+          <h4 className="font-bold text-blue-800">1. Authentication Module</h4>
+            <p>Handles user login with email/password. Uses JWT tokens issued by the Express backend with role-based redirect — Admin → /admin, Staff → /staff, Student → /student. Session persists via localStorage tokens. Protected routes and Express middleware guard against unauthorized access.</p>
           </div>
           <div>
             <h4 className="font-bold text-green-800">2. Admin Module (Dashboard + User Management + Menu + Reports)</h4>
@@ -291,31 +292,18 @@ const Slide9 = () => (
         <div className="text-xs opacity-70">Darshan University • #2304CS600 (Capstone Project / Internship)</div>
       </div>
       <div className="flex-1 p-6">
-        <h2 className="text-2xl font-bold text-blue-900 mb-4">Database Schema</h2>
+        <h2 className="text-2xl font-bold text-blue-900 mb-4">Database Schema (MySQL)</h2>
         <div className="grid grid-cols-3 gap-4 text-sm">
-          {/* Profiles */}
+          {/* Users */}
           <div className="border rounded-lg overflow-hidden">
-            <div className="bg-blue-600 text-white px-3 py-1.5 font-bold text-sm">profiles</div>
+            <div className="bg-blue-600 text-white px-3 py-1.5 font-bold text-sm">users</div>
             <table className="w-full text-xs">
               <thead className="bg-gray-100"><tr><th className="px-2 py-1 text-left">Column</th><th className="px-2 py-1 text-left">Type</th><th className="px-2 py-1">Key</th></tr></thead>
               <tbody>
-                <tr className="border-t"><td className="px-2 py-1 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold text-center">PK</td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">email</td><td>TEXT</td><td></td></tr>
-                <tr className="border-t"><td className="px-2 py-1">full_name</td><td>TEXT</td><td></td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">avatar_url</td><td>TEXT</td><td></td></tr>
-                <tr className="border-t"><td className="px-2 py-1">created_at</td><td>TIMESTAMP</td><td></td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">updated_at</td><td>TIMESTAMP</td><td></td></tr>
-              </tbody>
-            </table>
-          </div>
-          {/* User Roles */}
-          <div className="border rounded-lg overflow-hidden">
-            <div className="bg-green-600 text-white px-3 py-1.5 font-bold text-sm">user_roles</div>
-            <table className="w-full text-xs">
-              <thead className="bg-gray-100"><tr><th className="px-2 py-1 text-left">Column</th><th className="px-2 py-1 text-left">Type</th><th className="px-2 py-1">Key</th></tr></thead>
-              <tbody>
-                <tr className="border-t"><td className="px-2 py-1 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold text-center">PK</td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">user_id</td><td>UUID</td><td className="text-blue-600 font-bold text-center">FK</td></tr>
+                <tr className="border-t"><td className="px-2 py-1 font-medium">id</td><td>INT AUTO_INCREMENT</td><td className="text-yellow-600 font-bold text-center">PK</td></tr>
+                <tr className="border-t bg-gray-50"><td className="px-2 py-1">full_name</td><td>VARCHAR(255)</td><td></td></tr>
+                <tr className="border-t"><td className="px-2 py-1">email</td><td>VARCHAR(255) UNIQUE</td><td></td></tr>
+                <tr className="border-t bg-gray-50"><td className="px-2 py-1">password</td><td>VARCHAR(255)</td><td></td></tr>
                 <tr className="border-t"><td className="px-2 py-1">role</td><td>ENUM</td><td></td></tr>
                 <tr className="border-t bg-gray-50"><td className="px-2 py-1">created_at</td><td>TIMESTAMP</td><td></td></tr>
               </tbody>
@@ -327,25 +315,25 @@ const Slide9 = () => (
             <table className="w-full text-xs">
               <thead className="bg-gray-100"><tr><th className="px-2 py-1 text-left">Column</th><th className="px-2 py-1 text-left">Type</th><th className="px-2 py-1">Key</th></tr></thead>
               <tbody>
-                <tr className="border-t"><td className="px-2 py-1 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold text-center">PK</td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">meal_type</td><td>ENUM</td><td></td></tr>
-                <tr className="border-t"><td className="px-2 py-1">name</td><td>TEXT</td><td></td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">category</td><td>TEXT</td><td></td></tr>
-                <tr className="border-t"><td className="px-2 py-1">price</td><td>NUMERIC</td><td></td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">quantity</td><td>INTEGER</td><td></td></tr>
+                <tr className="border-t"><td className="px-2 py-1 font-medium">id</td><td>INT AUTO_INCREMENT</td><td className="text-yellow-600 font-bold text-center">PK</td></tr>
+                <tr className="border-t bg-gray-50"><td className="px-2 py-1">name</td><td>VARCHAR(255)</td><td></td></tr>
+                <tr className="border-t"><td className="px-2 py-1">meal_type</td><td>ENUM</td><td></td></tr>
+                <tr className="border-t bg-gray-50"><td className="px-2 py-1">category</td><td>VARCHAR(100)</td><td></td></tr>
+                <tr className="border-t"><td className="px-2 py-1">price</td><td>DECIMAL(10,2)</td><td></td></tr>
+                <tr className="border-t bg-gray-50"><td className="px-2 py-1">quantity</td><td>INT</td><td></td></tr>
                 <tr className="border-t"><td className="px-2 py-1">availability</td><td>BOOLEAN</td><td></td></tr>
               </tbody>
             </table>
           </div>
-          {/* Meal Bookings */}
+          {/* Bookings */}
           <div className="border rounded-lg overflow-hidden">
-            <div className="bg-purple-600 text-white px-3 py-1.5 font-bold text-sm">meal_bookings</div>
+            <div className="bg-purple-600 text-white px-3 py-1.5 font-bold text-sm">bookings</div>
             <table className="w-full text-xs">
               <thead className="bg-gray-100"><tr><th className="px-2 py-1 text-left">Column</th><th className="px-2 py-1 text-left">Type</th><th className="px-2 py-1">Key</th></tr></thead>
               <tbody>
-                <tr className="border-t"><td className="px-2 py-1 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold text-center">PK</td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">user_id</td><td>UUID</td><td className="text-blue-600 font-bold text-center">FK</td></tr>
-                <tr className="border-t"><td className="px-2 py-1">menu_item_id</td><td>UUID</td><td className="text-blue-600 font-bold text-center">FK</td></tr>
+                <tr className="border-t"><td className="px-2 py-1 font-medium">id</td><td>INT AUTO_INCREMENT</td><td className="text-yellow-600 font-bold text-center">PK</td></tr>
+                <tr className="border-t bg-gray-50"><td className="px-2 py-1">user_id</td><td>INT</td><td className="text-blue-600 font-bold text-center">FK</td></tr>
+                <tr className="border-t"><td className="px-2 py-1">menu_item_id</td><td>INT</td><td className="text-blue-600 font-bold text-center">FK</td></tr>
                 <tr className="border-t bg-gray-50"><td className="px-2 py-1">date</td><td>DATE</td><td></td></tr>
                 <tr className="border-t"><td className="px-2 py-1">meal_type</td><td>ENUM</td><td></td></tr>
                 <tr className="border-t bg-gray-50"><td className="px-2 py-1">status</td><td>ENUM</td><td></td></tr>
@@ -358,10 +346,10 @@ const Slide9 = () => (
             <table className="w-full text-xs">
               <thead className="bg-gray-100"><tr><th className="px-2 py-1 text-left">Column</th><th className="px-2 py-1 text-left">Type</th><th className="px-2 py-1">Key</th></tr></thead>
               <tbody>
-                <tr className="border-t"><td className="px-2 py-1 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold text-center">PK</td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">booking_id</td><td>UUID</td><td className="text-blue-600 font-bold text-center">FK</td></tr>
+                <tr className="border-t"><td className="px-2 py-1 font-medium">id</td><td>INT AUTO_INCREMENT</td><td className="text-yellow-600 font-bold text-center">PK</td></tr>
+                <tr className="border-t bg-gray-50"><td className="px-2 py-1">booking_id</td><td>INT</td><td className="text-blue-600 font-bold text-center">FK</td></tr>
                 <tr className="border-t"><td className="px-2 py-1">status</td><td>ENUM</td><td></td></tr>
-                <tr className="border-t bg-gray-50"><td className="px-2 py-1">marked_by</td><td>UUID</td><td className="text-blue-600 font-bold text-center">FK</td></tr>
+                <tr className="border-t bg-gray-50"><td className="px-2 py-1">marked_by</td><td>INT</td><td className="text-blue-600 font-bold text-center">FK</td></tr>
                 <tr className="border-t"><td className="px-2 py-1">marked_at</td><td>TIMESTAMP</td><td></td></tr>
               </tbody>
             </table>
@@ -380,41 +368,32 @@ const Slide10 = () => (
         <div className="text-xs opacity-70">Darshan University • #2304CS600 (Capstone Project / Internship)</div>
       </div>
       <div className="flex-1 p-6">
-        <h2 className="text-2xl font-bold text-blue-900 mb-4">System Design — ER Diagram</h2>
+        <h2 className="text-2xl font-bold text-blue-900 mb-4">System Design — ER Diagram (MySQL)</h2>
         <div className="bg-white border-2 rounded-lg p-4">
           <svg viewBox="0 0 900 400" className="w-full h-auto">
             <rect x="30" y="30" width="150" height="140" fill="#3B82F6" rx="6"/>
-            <text x="105" y="55" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">PROFILES</text>
+            <text x="105" y="55" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">USERS</text>
             <rect x="38" y="65" width="134" height="98" fill="white" rx="3"/>
-            <text x="50" y="82" fontSize="10" fontWeight="bold">id (PK)</text>
-            <text x="50" y="96" fontSize="10">email</text>
-            <text x="50" y="110" fontSize="10">full_name</text>
-            <text x="50" y="124" fontSize="10">avatar_url</text>
-            <text x="50" y="138" fontSize="10">created_at</text>
-            <text x="50" y="152" fontSize="10">updated_at</text>
-
-            <rect x="30" y="200" width="150" height="110" fill="#22C55E" rx="6"/>
-            <text x="105" y="225" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">USER_ROLES</text>
-            <rect x="38" y="235" width="134" height="68" fill="white" rx="3"/>
-            <text x="50" y="252" fontSize="10" fontWeight="bold">id (PK)</text>
-            <text x="50" y="266" fontSize="10">user_id (FK)</text>
-            <text x="50" y="280" fontSize="10">role</text>
-            <text x="50" y="294" fontSize="10">created_at</text>
+            <text x="50" y="82" fontSize="10" fontWeight="bold">id (PK) INT</text>
+            <text x="50" y="96" fontSize="10">full_name</text>
+            <text x="50" y="110" fontSize="10">email</text>
+            <text x="50" y="124" fontSize="10">password</text>
+            <text x="50" y="138" fontSize="10">role (ENUM)</text>
+            <text x="50" y="152" fontSize="10">created_at</text>
 
             <rect x="250" y="30" width="150" height="160" fill="#F97316" rx="6"/>
             <text x="325" y="55" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">MENU_ITEMS</text>
             <rect x="258" y="65" width="134" height="118" fill="white" rx="3"/>
-            <text x="270" y="82" fontSize="10" fontWeight="bold">id (PK)</text>
-            <text x="270" y="96" fontSize="10">meal_type</text>
-            <text x="270" y="110" fontSize="10">name, category</text>
+            <text x="270" y="82" fontSize="10" fontWeight="bold">id (PK) INT</text>
+            <text x="270" y="96" fontSize="10">name, meal_type</text>
+            <text x="270" y="110" fontSize="10">category</text>
             <text x="270" y="124" fontSize="10">price, quantity</text>
             <text x="270" y="138" fontSize="10">availability</text>
-            <text x="270" y="152" fontSize="10">description</text>
 
             <rect x="470" y="100" width="160" height="150" fill="#A855F7" rx="6"/>
-            <text x="550" y="125" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">MEAL_BOOKINGS</text>
+            <text x="550" y="125" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">BOOKINGS</text>
             <rect x="478" y="135" width="144" height="108" fill="white" rx="3"/>
-            <text x="490" y="152" fontSize="10" fontWeight="bold">id (PK)</text>
+            <text x="490" y="152" fontSize="10" fontWeight="bold">id (PK) INT</text>
             <text x="490" y="166" fontSize="10">user_id (FK)</text>
             <text x="490" y="180" fontSize="10">menu_item_id (FK)</text>
             <text x="490" y="194" fontSize="10">date, meal_type</text>
@@ -424,14 +403,12 @@ const Slide10 = () => (
             <rect x="700" y="130" width="150" height="130" fill="#EF4444" rx="6"/>
             <text x="775" y="155" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">ATTENDANCE</text>
             <rect x="708" y="165" width="134" height="88" fill="white" rx="3"/>
-            <text x="720" y="182" fontSize="10" fontWeight="bold">id (PK)</text>
+            <text x="720" y="182" fontSize="10" fontWeight="bold">id (PK) INT</text>
             <text x="720" y="196" fontSize="10">booking_id (FK)</text>
             <text x="720" y="210" fontSize="10">status</text>
             <text x="720" y="224" fontSize="10">marked_by (FK)</text>
             <text x="720" y="238" fontSize="10">marked_at</text>
 
-            <line x1="105" y1="170" x2="105" y2="200" stroke="#333" strokeWidth="2"/>
-            <text x="115" y="190" fontSize="9" fill="#666">1:N</text>
             <line x1="180" y1="100" x2="470" y2="175" stroke="#333" strokeWidth="2"/>
             <text x="320" y="130" fontSize="9" fill="#666">1:N</text>
             <line x1="400" y1="110" x2="470" y2="165" stroke="#333" strokeWidth="2"/>
@@ -520,10 +497,10 @@ const Slide13 = () => (
               The <strong>Dining Hall Management System</strong> successfully addresses the inefficiencies of manual dining hall operations in universities. By providing role-based access for Admins, Staff, and Students, it ensures secure and organized management of meals, bookings, and attendance.
             </p>
             <p>
-              The system demonstrates practical application of modern web technologies including <strong>React.js</strong>, <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>, and <strong>Supabase</strong> with Row Level Security for data protection.
+              The system demonstrates practical application of modern web technologies including <strong>React.js</strong> for the frontend, <strong>Node.js</strong> with <strong>Express.js</strong> for the REST API backend, and <strong>MySQL</strong> for relational data storage. JWT-based authentication and role-based middleware ensure data protection.
             </p>
             <p>
-              Key achievements include automated report generation with multi-format export, real-time meal booking with duplicate prevention, and efficient attendance tracking. The application is production-ready and can be deployed for any educational institution's dining facility.
+              Key achievements include automated report generation with multi-format export, real-time meal booking with duplicate prevention, and efficient attendance tracking. The application follows the MVC architecture pattern and is ready for deployment in any educational institution's dining facility.
             </p>
           </div>
         </div>
@@ -543,14 +520,15 @@ const Slide14 = () => (
         <h2 className="text-3xl font-bold text-blue-900 mb-6">References</h2>
         <ol className="space-y-4 text-gray-700 list-decimal list-inside text-lg">
           <li>React.js Official Documentation — <span className="text-blue-600">https://react.dev</span></li>
-          <li>Supabase Documentation — <span className="text-blue-600">https://supabase.com/docs</span></li>
+          <li>Node.js Documentation — <span className="text-blue-600">https://nodejs.org/docs</span></li>
+          <li>Express.js Documentation — <span className="text-blue-600">https://expressjs.com</span></li>
+          <li>MySQL Documentation — <span className="text-blue-600">https://dev.mysql.com/doc</span></li>
           <li>Tailwind CSS Documentation — <span className="text-blue-600">https://tailwindcss.com/docs</span></li>
-          <li>TypeScript Handbook — <span className="text-blue-600">https://www.typescriptlang.org/docs</span></li>
           <li>shadcn/ui Component Library — <span className="text-blue-600">https://ui.shadcn.com</span></li>
+          <li>JSON Web Tokens (JWT) — <span className="text-blue-600">https://jwt.io</span></li>
           <li>jsPDF Library — <span className="text-blue-600">https://github.com/parallax/jsPDF</span></li>
           <li>SheetJS (xlsx) — <span className="text-blue-600">https://sheetjs.com</span></li>
           <li>Lucide Icons — <span className="text-blue-600">https://lucide.dev</span></li>
-          <li>PostgreSQL Row Level Security — <span className="text-blue-600">https://www.postgresql.org/docs/current/ddl-rowsecurity.html</span></li>
         </ol>
       </div>
     </div>

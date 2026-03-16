@@ -27,9 +27,9 @@ const Diagrams = () => {
               </CardHeader>
               <CardContent className="overflow-x-auto">
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                  {/* Profiles Table */}
+                  {/* Users Table */}
                   <div className="border rounded-lg overflow-hidden">
-                    <div className="bg-blue-600 text-white px-4 py-2 font-bold">profiles</div>
+                    <div className="bg-blue-600 text-white px-4 py-2 font-bold">users</div>
                     <table className="w-full text-sm">
                       <thead className="bg-gray-100">
                         <tr>
@@ -39,32 +39,14 @@ const Diagrams = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold">PK</td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">email</td><td>TEXT</td><td></td></tr>
-                        <tr className="border-t"><td className="px-3 py-2">full_name</td><td>TEXT</td><td></td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">avatar_url</td><td>TEXT</td><td></td></tr>
+                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>INT AUTO_INCREMENT</td><td className="text-yellow-600 font-bold">PK</td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">full_name</td><td>VARCHAR(255)</td><td></td></tr>
+                        <tr className="border-t"><td className="px-3 py-2">email</td><td>VARCHAR(255) UNIQUE</td><td></td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">password</td><td>VARCHAR(255)</td><td></td></tr>
+                        <tr className="border-t"><td className="px-3 py-2">role</td><td>ENUM</td><td></td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">avatar_url</td><td>VARCHAR(500)</td><td></td></tr>
                         <tr className="border-t"><td className="px-3 py-2">created_at</td><td>TIMESTAMP</td><td></td></tr>
                         <tr className="border-t bg-gray-50"><td className="px-3 py-2">updated_at</td><td>TIMESTAMP</td><td></td></tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  {/* User Roles Table */}
-                  <div className="border rounded-lg overflow-hidden">
-                    <div className="bg-green-600 text-white px-4 py-2 font-bold">user_roles</div>
-                    <table className="w-full text-sm">
-                      <thead className="bg-gray-100">
-                        <tr>
-                          <th className="px-3 py-2 text-left">Column</th>
-                          <th className="px-3 py-2 text-left">Type</th>
-                          <th className="px-3 py-2 text-left">Key</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold">PK</td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">user_id</td><td>UUID</td><td className="text-blue-600 font-bold">FK</td></tr>
-                        <tr className="border-t"><td className="px-3 py-2">role</td><td>ENUM</td><td></td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">created_at</td><td>TIMESTAMP</td><td></td></tr>
                       </tbody>
                     </table>
                     <div className="bg-gray-100 px-3 py-2 text-xs">
@@ -84,13 +66,13 @@ const Diagrams = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold">PK</td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">meal_type</td><td>ENUM</td><td></td></tr>
-                        <tr className="border-t"><td className="px-3 py-2">name</td><td>TEXT</td><td></td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">category</td><td>TEXT</td><td></td></tr>
+                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>INT AUTO_INCREMENT</td><td className="text-yellow-600 font-bold">PK</td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">name</td><td>VARCHAR(255)</td><td></td></tr>
+                        <tr className="border-t"><td className="px-3 py-2">meal_type</td><td>ENUM</td><td></td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">category</td><td>VARCHAR(100)</td><td></td></tr>
                         <tr className="border-t"><td className="px-3 py-2">description</td><td>TEXT</td><td></td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">price</td><td>NUMERIC</td><td></td></tr>
-                        <tr className="border-t"><td className="px-3 py-2">quantity</td><td>INTEGER</td><td></td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">price</td><td>DECIMAL(10,2)</td><td></td></tr>
+                        <tr className="border-t"><td className="px-3 py-2">quantity</td><td>INT</td><td></td></tr>
                         <tr className="border-t bg-gray-50"><td className="px-3 py-2">availability</td><td>BOOLEAN</td><td></td></tr>
                         <tr className="border-t"><td className="px-3 py-2">created_at</td><td>TIMESTAMP</td><td></td></tr>
                         <tr className="border-t bg-gray-50"><td className="px-3 py-2">updated_at</td><td>TIMESTAMP</td><td></td></tr>
@@ -101,9 +83,9 @@ const Diagrams = () => {
                     </div>
                   </div>
 
-                  {/* Meal Bookings Table */}
+                  {/* Bookings Table */}
                   <div className="border rounded-lg overflow-hidden">
-                    <div className="bg-purple-600 text-white px-4 py-2 font-bold">meal_bookings</div>
+                    <div className="bg-purple-600 text-white px-4 py-2 font-bold">bookings</div>
                     <table className="w-full text-sm">
                       <thead className="bg-gray-100">
                         <tr>
@@ -113,9 +95,9 @@ const Diagrams = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold">PK</td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">user_id</td><td>UUID</td><td className="text-blue-600 font-bold">FK</td></tr>
-                        <tr className="border-t"><td className="px-3 py-2">menu_item_id</td><td>UUID</td><td className="text-blue-600 font-bold">FK</td></tr>
+                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>INT AUTO_INCREMENT</td><td className="text-yellow-600 font-bold">PK</td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">user_id</td><td>INT</td><td className="text-blue-600 font-bold">FK</td></tr>
+                        <tr className="border-t"><td className="px-3 py-2">menu_item_id</td><td>INT</td><td className="text-blue-600 font-bold">FK</td></tr>
                         <tr className="border-t bg-gray-50"><td className="px-3 py-2">date</td><td>DATE</td><td></td></tr>
                         <tr className="border-t"><td className="px-3 py-2">meal_type</td><td>ENUM</td><td></td></tr>
                         <tr className="border-t bg-gray-50"><td className="px-3 py-2">status</td><td>ENUM</td><td></td></tr>
@@ -140,10 +122,10 @@ const Diagrams = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold">PK</td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">booking_id</td><td>UUID</td><td className="text-blue-600 font-bold">FK</td></tr>
+                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>INT AUTO_INCREMENT</td><td className="text-yellow-600 font-bold">PK</td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">booking_id</td><td>INT</td><td className="text-blue-600 font-bold">FK</td></tr>
                         <tr className="border-t"><td className="px-3 py-2">status</td><td>ENUM</td><td></td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">marked_by</td><td>UUID</td><td className="text-blue-600 font-bold">FK</td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">marked_by</td><td>INT</td><td className="text-blue-600 font-bold">FK</td></tr>
                         <tr className="border-t"><td className="px-3 py-2">marked_at</td><td>TIMESTAMP</td><td></td></tr>
                       </tbody>
                     </table>
@@ -165,79 +147,66 @@ const Diagrams = () => {
               <CardContent>
                 <div className="bg-white p-8 rounded-lg border-2 border-gray-200">
                   <svg viewBox="0 0 1000 600" className="w-full h-auto">
-                    {/* Profiles Entity */}
+                    {/* Users Entity */}
                     <rect x="50" y="50" width="180" height="180" fill="#3B82F6" rx="8"/>
-                    <text x="140" y="80" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16">PROFILES</text>
+                    <text x="140" y="80" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16">USERS</text>
                     <rect x="60" y="95" width="160" height="125" fill="white" rx="4"/>
-                    <text x="75" y="115" fontSize="11" fontWeight="bold">id (PK)</text>
-                    <text x="75" y="132" fontSize="11">email</text>
-                    <text x="75" y="149" fontSize="11">full_name</text>
-                    <text x="75" y="166" fontSize="11">avatar_url</text>
-                    <text x="75" y="183" fontSize="11">created_at</text>
-                    <text x="75" y="200" fontSize="11">updated_at</text>
-
-                    {/* User Roles Entity */}
-                    <rect x="50" y="280" width="180" height="140" fill="#22C55E" rx="8"/>
-                    <text x="140" y="310" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16">USER_ROLES</text>
-                    <rect x="60" y="325" width="160" height="85" fill="white" rx="4"/>
-                    <text x="75" y="345" fontSize="11" fontWeight="bold">id (PK)</text>
-                    <text x="75" y="362" fontSize="11">user_id (FK)</text>
-                    <text x="75" y="379" fontSize="11">role</text>
-                    <text x="75" y="396" fontSize="11">created_at</text>
+                    <text x="75" y="115" fontSize="11" fontWeight="bold">id (PK) INT</text>
+                    <text x="75" y="132" fontSize="11">full_name</text>
+                    <text x="75" y="149" fontSize="11">email</text>
+                    <text x="75" y="166" fontSize="11">password</text>
+                    <text x="75" y="183" fontSize="11">role (ENUM)</text>
+                    <text x="75" y="200" fontSize="11">created_at</text>
 
                     {/* Menu Items Entity */}
                     <rect x="300" y="50" width="180" height="220" fill="#F97316" rx="8"/>
                     <text x="390" y="80" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16">MENU_ITEMS</text>
                     <rect x="310" y="95" width="160" height="165" fill="white" rx="4"/>
-                    <text x="325" y="115" fontSize="11" fontWeight="bold">id (PK)</text>
-                    <text x="325" y="132" fontSize="11">meal_type</text>
-                    <text x="325" y="149" fontSize="11">name</text>
+                    <text x="325" y="115" fontSize="11" fontWeight="bold">id (PK) INT</text>
+                    <text x="325" y="132" fontSize="11">name</text>
+                    <text x="325" y="149" fontSize="11">meal_type (ENUM)</text>
                     <text x="325" y="166" fontSize="11">category</text>
                     <text x="325" y="183" fontSize="11">description</text>
-                    <text x="325" y="200" fontSize="11">price</text>
-                    <text x="325" y="217" fontSize="11">quantity</text>
-                    <text x="325" y="234" fontSize="11">availability</text>
+                    <text x="325" y="200" fontSize="11">price DECIMAL</text>
+                    <text x="325" y="217" fontSize="11">quantity INT</text>
+                    <text x="325" y="234" fontSize="11">availability BOOL</text>
 
-                    {/* Meal Bookings Entity */}
+                    {/* Bookings Entity */}
                     <rect x="550" y="150" width="180" height="200" fill="#A855F7" rx="8"/>
-                    <text x="640" y="180" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16">MEAL_BOOKINGS</text>
+                    <text x="640" y="180" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16">BOOKINGS</text>
                     <rect x="560" y="195" width="160" height="145" fill="white" rx="4"/>
-                    <text x="575" y="215" fontSize="11" fontWeight="bold">id (PK)</text>
-                    <text x="575" y="232" fontSize="11">user_id (FK)</text>
-                    <text x="575" y="249" fontSize="11">menu_item_id (FK)</text>
-                    <text x="575" y="266" fontSize="11">date</text>
-                    <text x="575" y="283" fontSize="11">meal_type</text>
-                    <text x="575" y="300" fontSize="11">status</text>
+                    <text x="575" y="215" fontSize="11" fontWeight="bold">id (PK) INT</text>
+                    <text x="575" y="232" fontSize="11">user_id (FK) INT</text>
+                    <text x="575" y="249" fontSize="11">menu_item_id (FK) INT</text>
+                    <text x="575" y="266" fontSize="11">date DATE</text>
+                    <text x="575" y="283" fontSize="11">meal_type ENUM</text>
+                    <text x="575" y="300" fontSize="11">status ENUM</text>
                     <text x="575" y="317" fontSize="11">created_at</text>
 
                     {/* Attendance Entity */}
                     <rect x="800" y="200" width="180" height="160" fill="#EF4444" rx="8"/>
                     <text x="890" y="230" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16">ATTENDANCE</text>
                     <rect x="810" y="245" width="160" height="105" fill="white" rx="4"/>
-                    <text x="825" y="265" fontSize="11" fontWeight="bold">id (PK)</text>
-                    <text x="825" y="282" fontSize="11">booking_id (FK)</text>
-                    <text x="825" y="299" fontSize="11">status</text>
-                    <text x="825" y="316" fontSize="11">marked_by (FK)</text>
+                    <text x="825" y="265" fontSize="11" fontWeight="bold">id (PK) INT</text>
+                    <text x="825" y="282" fontSize="11">booking_id (FK) INT</text>
+                    <text x="825" y="299" fontSize="11">status ENUM</text>
+                    <text x="825" y="316" fontSize="11">marked_by (FK) INT</text>
                     <text x="825" y="333" fontSize="11">marked_at</text>
 
                     {/* Relationships */}
-                    {/* Profiles -> User Roles */}
-                    <line x1="140" y1="230" x2="140" y2="280" stroke="#333" strokeWidth="2"/>
-                    <text x="145" y="260" fontSize="10">1:N</text>
-
-                    {/* Profiles -> Meal Bookings */}
+                    {/* Users -> Bookings */}
                     <line x1="230" y1="140" x2="550" y2="220" stroke="#333" strokeWidth="2"/>
                     <text x="380" y="170" fontSize="10">1:N</text>
 
-                    {/* Menu Items -> Meal Bookings */}
+                    {/* Menu Items -> Bookings */}
                     <line x1="480" y1="160" x2="550" y2="250" stroke="#333" strokeWidth="2"/>
                     <text x="500" y="195" fontSize="10">1:N</text>
 
-                    {/* Meal Bookings -> Attendance */}
+                    {/* Bookings -> Attendance */}
                     <line x1="730" y1="280" x2="800" y2="280" stroke="#333" strokeWidth="2"/>
                     <text x="755" y="270" fontSize="10">1:1</text>
 
-                    {/* Profiles -> Attendance (marked_by) */}
+                    {/* Users -> Attendance (marked_by) */}
                     <path d="M 230 120 Q 500 50 890 200" fill="none" stroke="#333" strokeWidth="2" strokeDasharray="5,5"/>
                     <text x="550" y="80" fontSize="10">marks (FK)</text>
                   </svg>
