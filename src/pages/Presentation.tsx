@@ -390,20 +390,10 @@ const Slide10 = () => (
             <text x="270" y="124" fontSize="10">price, quantity</text>
             <text x="270" y="138" fontSize="10">availability</text>
 
-            <rect x="250" y="30" width="150" height="160" fill="#F97316" rx="6"/>
-            <text x="325" y="55" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">MENU_ITEMS</text>
-            <rect x="258" y="65" width="134" height="118" fill="white" rx="3"/>
-            <text x="270" y="82" fontSize="10" fontWeight="bold">id (PK)</text>
-            <text x="270" y="96" fontSize="10">meal_type</text>
-            <text x="270" y="110" fontSize="10">name, category</text>
-            <text x="270" y="124" fontSize="10">price, quantity</text>
-            <text x="270" y="138" fontSize="10">availability</text>
-            <text x="270" y="152" fontSize="10">description</text>
-
             <rect x="470" y="100" width="160" height="150" fill="#A855F7" rx="6"/>
-            <text x="550" y="125" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">MEAL_BOOKINGS</text>
+            <text x="550" y="125" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">BOOKINGS</text>
             <rect x="478" y="135" width="144" height="108" fill="white" rx="3"/>
-            <text x="490" y="152" fontSize="10" fontWeight="bold">id (PK)</text>
+            <text x="490" y="152" fontSize="10" fontWeight="bold">id (PK) INT</text>
             <text x="490" y="166" fontSize="10">user_id (FK)</text>
             <text x="490" y="180" fontSize="10">menu_item_id (FK)</text>
             <text x="490" y="194" fontSize="10">date, meal_type</text>
@@ -413,7 +403,7 @@ const Slide10 = () => (
             <rect x="700" y="130" width="150" height="130" fill="#EF4444" rx="6"/>
             <text x="775" y="155" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">ATTENDANCE</text>
             <rect x="708" y="165" width="134" height="88" fill="white" rx="3"/>
-            <text x="720" y="182" fontSize="10" fontWeight="bold">id (PK)</text>
+            <text x="720" y="182" fontSize="10" fontWeight="bold">id (PK) INT</text>
             <text x="720" y="196" fontSize="10">booking_id (FK)</text>
             <text x="720" y="210" fontSize="10">status</text>
             <text x="720" y="224" fontSize="10">marked_by (FK)</text>
