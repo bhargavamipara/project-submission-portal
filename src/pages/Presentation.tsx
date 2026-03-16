@@ -368,18 +368,18 @@ const Slide10 = () => (
         <div className="text-xs opacity-70">Darshan University • #2304CS600 (Capstone Project / Internship)</div>
       </div>
       <div className="flex-1 p-6">
-        <h2 className="text-2xl font-bold text-blue-900 mb-4">System Design — ER Diagram</h2>
+        <h2 className="text-2xl font-bold text-blue-900 mb-4">System Design — ER Diagram (MySQL)</h2>
         <div className="bg-white border-2 rounded-lg p-4">
           <svg viewBox="0 0 900 400" className="w-full h-auto">
             <rect x="30" y="30" width="150" height="140" fill="#3B82F6" rx="6"/>
-            <text x="105" y="55" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">PROFILES</text>
+            <text x="105" y="55" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">USERS</text>
             <rect x="38" y="65" width="134" height="98" fill="white" rx="3"/>
-            <text x="50" y="82" fontSize="10" fontWeight="bold">id (PK)</text>
-            <text x="50" y="96" fontSize="10">email</text>
-            <text x="50" y="110" fontSize="10">full_name</text>
-            <text x="50" y="124" fontSize="10">avatar_url</text>
-            <text x="50" y="138" fontSize="10">created_at</text>
-            <text x="50" y="152" fontSize="10">updated_at</text>
+            <text x="50" y="82" fontSize="10" fontWeight="bold">id (PK) INT</text>
+            <text x="50" y="96" fontSize="10">full_name</text>
+            <text x="50" y="110" fontSize="10">email</text>
+            <text x="50" y="124" fontSize="10">password</text>
+            <text x="50" y="138" fontSize="10">role (ENUM)</text>
+            <text x="50" y="152" fontSize="10">created_at</text>
 
             <rect x="30" y="200" width="150" height="110" fill="#22C55E" rx="6"/>
             <text x="105" y="225" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">USER_ROLES</text>
