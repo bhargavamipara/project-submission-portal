@@ -263,8 +263,8 @@ const Slide8 = () => (
         <h2 className="text-3xl font-bold text-blue-900 mb-6">Module Detailing</h2>
         <div className="space-y-5 text-gray-700 text-[15px]">
           <div>
-            <h4 className="font-bold text-blue-800">1. Authentication Module</h4>
-            <p>Handles user login with email/password. Uses Supabase Auth with role-based redirect — Admin → /admin, Staff → /staff, Student → /student. Session persists via JWT tokens. Protected routes guard against unauthorized access.</p>
+          <h4 className="font-bold text-blue-800">1. Authentication Module</h4>
+            <p>Handles user login with email/password. Uses JWT tokens issued by the Express backend with role-based redirect — Admin → /admin, Staff → /staff, Student → /student. Session persists via localStorage tokens. Protected routes and Express middleware guard against unauthorized access.</p>
           </div>
           <div>
             <h4 className="font-bold text-green-800">2. Admin Module (Dashboard + User Management + Menu + Reports)</h4>
