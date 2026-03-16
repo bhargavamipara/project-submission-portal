@@ -381,13 +381,14 @@ const Slide10 = () => (
             <text x="50" y="138" fontSize="10">role (ENUM)</text>
             <text x="50" y="152" fontSize="10">created_at</text>
 
-            <rect x="30" y="200" width="150" height="110" fill="#22C55E" rx="6"/>
-            <text x="105" y="225" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">USER_ROLES</text>
-            <rect x="38" y="235" width="134" height="68" fill="white" rx="3"/>
-            <text x="50" y="252" fontSize="10" fontWeight="bold">id (PK)</text>
-            <text x="50" y="266" fontSize="10">user_id (FK)</text>
-            <text x="50" y="280" fontSize="10">role</text>
-            <text x="50" y="294" fontSize="10">created_at</text>
+            <rect x="250" y="30" width="150" height="160" fill="#F97316" rx="6"/>
+            <text x="325" y="55" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">MENU_ITEMS</text>
+            <rect x="258" y="65" width="134" height="118" fill="white" rx="3"/>
+            <text x="270" y="82" fontSize="10" fontWeight="bold">id (PK) INT</text>
+            <text x="270" y="96" fontSize="10">name, meal_type</text>
+            <text x="270" y="110" fontSize="10">category</text>
+            <text x="270" y="124" fontSize="10">price, quantity</text>
+            <text x="270" y="138" fontSize="10">availability</text>
 
             <rect x="250" y="30" width="150" height="160" fill="#F97316" rx="6"/>
             <text x="325" y="55" textAnchor="middle" fill="white" fontWeight="bold" fontSize="13">MENU_ITEMS</text>
