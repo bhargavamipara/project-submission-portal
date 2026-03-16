@@ -409,8 +409,6 @@ const Slide10 = () => (
             <text x="720" y="224" fontSize="10">marked_by (FK)</text>
             <text x="720" y="238" fontSize="10">marked_at</text>
 
-            <line x1="105" y1="170" x2="105" y2="200" stroke="#333" strokeWidth="2"/>
-            <text x="115" y="190" fontSize="9" fill="#666">1:N</text>
             <line x1="180" y1="100" x2="470" y2="175" stroke="#333" strokeWidth="2"/>
             <text x="320" y="130" fontSize="9" fill="#666">1:N</text>
             <line x1="400" y1="110" x2="470" y2="165" stroke="#333" strokeWidth="2"/>
