@@ -191,13 +191,14 @@ const Slide6 = () => (
             <table className="w-full text-gray-700">
               <tbody>
                 {[
-                  ["Frontend", "React.js, TypeScript, Tailwind CSS"],
-                  ["Backend", "Supabase (PostgreSQL)"],
-                  ["Auth", "Supabase Auth with RLS"],
-                  ["Libraries", "shadcn/ui, jspdf, xlsx, recharts"],
+                  ["Frontend", "React.js, Tailwind CSS, Vite"],
+                  ["Backend", "Node.js, Express.js"],
+                  ["Database", "MySQL with mysql2 driver"],
+                  ["Auth", "JWT (jsonwebtoken) + bcryptjs"],
+                  ["Libraries", "shadcn/ui, jspdf, xlsx, date-fns"],
                   ["Browser", "Chrome / Firefox / Edge"],
                   ["OS", "Windows / macOS / Linux"],
-                  ["IDE", "VS Code / Lovable"],
+                  ["IDE", "VS Code"],
                 ].map(([k, v], i) => (
                   <tr key={i} className="border-b"><td className="py-2 font-semibold">{k}</td><td className="py-2">{v}</td></tr>
                 ))}
