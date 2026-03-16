@@ -42,7 +42,7 @@ export default function MenuManagement() {
   const fetchMenuItems = async () => {
     try {
       const data = await api.get('/menu');
-      setMenuItems(data.menuItems || data || []);
+      setMenuItems(data.menu_items || data || []);
     } catch (error) {
       console.error('Error fetching menu items:', error);
       toast({ variant: 'destructive', title: 'Error', description: 'Failed to fetch menu items' });

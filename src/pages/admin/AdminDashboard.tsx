@@ -50,7 +50,7 @@ export default function AdminDashboard() {
 
   const fetchRecentBookings = async () => {
     try {
-      const data = await api.get('/bookings/user/all');
+      const data = await api.get('/bookings');
       const bookings = data.bookings || data || [];
       setRecentBookings(bookings.slice(0, 5));
     } catch (error) {

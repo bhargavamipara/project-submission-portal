@@ -22,7 +22,7 @@ export default function StaffDashboard() {
       const today = format(new Date(), 'yyyy-MM-dd');
 
       const [bookingsData, attendanceData] = await Promise.all([
-        api.get('/bookings/user/all'),
+        api.get('/bookings'),
         api.get('/attendance'),
       ]);
 

@@ -43,7 +43,7 @@ export default function Attendance() {
   const fetchBookings = async () => {
     setLoading(true);
     try {
-      const data = await api.get('/bookings/user/all');
+      const data = await api.get('/bookings');
       const allBookings = data.bookings || data || [];
       const dateStr = format(selectedDate, 'yyyy-MM-dd');
 

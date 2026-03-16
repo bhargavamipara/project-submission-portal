@@ -46,7 +46,7 @@ export default function Reports() {
   const fetchReportData = async () => {
     setLoading(true);
     try {
-      const data = await api.get('/bookings/user/all');
+      const data = await api.get('/bookings');
       let allBookings: ReportBooking[] = data.bookings || data || [];
 
       // Filter by date range
