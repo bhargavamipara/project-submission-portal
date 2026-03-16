@@ -83,9 +83,9 @@ const Diagrams = () => {
                     </div>
                   </div>
 
-                  {/* Meal Bookings Table */}
+                  {/* Bookings Table */}
                   <div className="border rounded-lg overflow-hidden">
-                    <div className="bg-purple-600 text-white px-4 py-2 font-bold">meal_bookings</div>
+                    <div className="bg-purple-600 text-white px-4 py-2 font-bold">bookings</div>
                     <table className="w-full text-sm">
                       <thead className="bg-gray-100">
                         <tr>
@@ -95,9 +95,9 @@ const Diagrams = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold">PK</td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">user_id</td><td>UUID</td><td className="text-blue-600 font-bold">FK</td></tr>
-                        <tr className="border-t"><td className="px-3 py-2">menu_item_id</td><td>UUID</td><td className="text-blue-600 font-bold">FK</td></tr>
+                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>INT AUTO_INCREMENT</td><td className="text-yellow-600 font-bold">PK</td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">user_id</td><td>INT</td><td className="text-blue-600 font-bold">FK</td></tr>
+                        <tr className="border-t"><td className="px-3 py-2">menu_item_id</td><td>INT</td><td className="text-blue-600 font-bold">FK</td></tr>
                         <tr className="border-t bg-gray-50"><td className="px-3 py-2">date</td><td>DATE</td><td></td></tr>
                         <tr className="border-t"><td className="px-3 py-2">meal_type</td><td>ENUM</td><td></td></tr>
                         <tr className="border-t bg-gray-50"><td className="px-3 py-2">status</td><td>ENUM</td><td></td></tr>
