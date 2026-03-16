@@ -171,26 +171,26 @@ const Diagrams = () => {
                     <text x="325" y="217" fontSize="11">quantity INT</text>
                     <text x="325" y="234" fontSize="11">availability BOOL</text>
 
-                    {/* Meal Bookings Entity */}
+                    {/* Bookings Entity */}
                     <rect x="550" y="150" width="180" height="200" fill="#A855F7" rx="8"/>
-                    <text x="640" y="180" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16">MEAL_BOOKINGS</text>
+                    <text x="640" y="180" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16">BOOKINGS</text>
                     <rect x="560" y="195" width="160" height="145" fill="white" rx="4"/>
-                    <text x="575" y="215" fontSize="11" fontWeight="bold">id (PK)</text>
-                    <text x="575" y="232" fontSize="11">user_id (FK)</text>
-                    <text x="575" y="249" fontSize="11">menu_item_id (FK)</text>
-                    <text x="575" y="266" fontSize="11">date</text>
-                    <text x="575" y="283" fontSize="11">meal_type</text>
-                    <text x="575" y="300" fontSize="11">status</text>
+                    <text x="575" y="215" fontSize="11" fontWeight="bold">id (PK) INT</text>
+                    <text x="575" y="232" fontSize="11">user_id (FK) INT</text>
+                    <text x="575" y="249" fontSize="11">menu_item_id (FK) INT</text>
+                    <text x="575" y="266" fontSize="11">date DATE</text>
+                    <text x="575" y="283" fontSize="11">meal_type ENUM</text>
+                    <text x="575" y="300" fontSize="11">status ENUM</text>
                     <text x="575" y="317" fontSize="11">created_at</text>
 
                     {/* Attendance Entity */}
                     <rect x="800" y="200" width="180" height="160" fill="#EF4444" rx="8"/>
                     <text x="890" y="230" textAnchor="middle" fill="white" fontWeight="bold" fontSize="16">ATTENDANCE</text>
                     <rect x="810" y="245" width="160" height="105" fill="white" rx="4"/>
-                    <text x="825" y="265" fontSize="11" fontWeight="bold">id (PK)</text>
-                    <text x="825" y="282" fontSize="11">booking_id (FK)</text>
-                    <text x="825" y="299" fontSize="11">status</text>
-                    <text x="825" y="316" fontSize="11">marked_by (FK)</text>
+                    <text x="825" y="265" fontSize="11" fontWeight="bold">id (PK) INT</text>
+                    <text x="825" y="282" fontSize="11">booking_id (FK) INT</text>
+                    <text x="825" y="299" fontSize="11">status ENUM</text>
+                    <text x="825" y="316" fontSize="11">marked_by (FK) INT</text>
                     <text x="825" y="333" fontSize="11">marked_at</text>
 
                     {/* Relationships */}
