@@ -77,7 +77,7 @@ const Slide3 = () => (
             The system allows students to browse daily menus, book meals in advance, and track their booking history. Staff members can mark attendance for booked students during meal times. Administrators have complete control over user management, menu configuration, and report generation with export capabilities (PDF, Excel, CSV).
           </p>
           <p>
-            Built using <strong>React.js</strong>, <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>, and <strong>Supabase</strong> (PostgreSQL with Row Level Security), the application ensures secure, real-time data management with a modern and responsive user interface.
+            Built using <strong>React.js</strong> for the frontend and <strong>Node.js</strong> with <strong>Express.js</strong> for the backend, connected to a <strong>MySQL</strong> database. Authentication is handled via <strong>JWT</strong> tokens with <strong>bcrypt</strong> password hashing, and role-based middleware ensures secure access control.
           </p>
         </div>
       </div>
