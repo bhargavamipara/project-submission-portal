@@ -531,14 +531,15 @@ const Slide14 = () => (
         <h2 className="text-3xl font-bold text-blue-900 mb-6">References</h2>
         <ol className="space-y-4 text-gray-700 list-decimal list-inside text-lg">
           <li>React.js Official Documentation — <span className="text-blue-600">https://react.dev</span></li>
-          <li>Supabase Documentation — <span className="text-blue-600">https://supabase.com/docs</span></li>
+          <li>Node.js Documentation — <span className="text-blue-600">https://nodejs.org/docs</span></li>
+          <li>Express.js Documentation — <span className="text-blue-600">https://expressjs.com</span></li>
+          <li>MySQL Documentation — <span className="text-blue-600">https://dev.mysql.com/doc</span></li>
           <li>Tailwind CSS Documentation — <span className="text-blue-600">https://tailwindcss.com/docs</span></li>
-          <li>TypeScript Handbook — <span className="text-blue-600">https://www.typescriptlang.org/docs</span></li>
           <li>shadcn/ui Component Library — <span className="text-blue-600">https://ui.shadcn.com</span></li>
+          <li>JSON Web Tokens (JWT) — <span className="text-blue-600">https://jwt.io</span></li>
           <li>jsPDF Library — <span className="text-blue-600">https://github.com/parallax/jsPDF</span></li>
           <li>SheetJS (xlsx) — <span className="text-blue-600">https://sheetjs.com</span></li>
           <li>Lucide Icons — <span className="text-blue-600">https://lucide.dev</span></li>
-          <li>PostgreSQL Row Level Security — <span className="text-blue-600">https://www.postgresql.org/docs/current/ddl-rowsecurity.html</span></li>
         </ol>
       </div>
     </div>
