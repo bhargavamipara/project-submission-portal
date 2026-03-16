@@ -508,10 +508,10 @@ const Slide13 = () => (
               The <strong>Dining Hall Management System</strong> successfully addresses the inefficiencies of manual dining hall operations in universities. By providing role-based access for Admins, Staff, and Students, it ensures secure and organized management of meals, bookings, and attendance.
             </p>
             <p>
-              The system demonstrates practical application of modern web technologies including <strong>React.js</strong>, <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>, and <strong>Supabase</strong> with Row Level Security for data protection.
+              The system demonstrates practical application of modern web technologies including <strong>React.js</strong> for the frontend, <strong>Node.js</strong> with <strong>Express.js</strong> for the REST API backend, and <strong>MySQL</strong> for relational data storage. JWT-based authentication and role-based middleware ensure data protection.
             </p>
             <p>
-              Key achievements include automated report generation with multi-format export, real-time meal booking with duplicate prevention, and efficient attendance tracking. The application is production-ready and can be deployed for any educational institution's dining facility.
+              Key achievements include automated report generation with multi-format export, real-time meal booking with duplicate prevention, and efficient attendance tracking. The application follows the MVC architecture pattern and is ready for deployment in any educational institution's dining facility.
             </p>
           </div>
         </div>
