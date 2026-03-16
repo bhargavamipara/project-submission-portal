@@ -27,9 +27,9 @@ const Diagrams = () => {
               </CardHeader>
               <CardContent className="overflow-x-auto">
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                  {/* Profiles Table */}
+                  {/* Users Table */}
                   <div className="border rounded-lg overflow-hidden">
-                    <div className="bg-blue-600 text-white px-4 py-2 font-bold">profiles</div>
+                    <div className="bg-blue-600 text-white px-4 py-2 font-bold">users</div>
                     <table className="w-full text-sm">
                       <thead className="bg-gray-100">
                         <tr>
@@ -39,32 +39,14 @@ const Diagrams = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold">PK</td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">email</td><td>TEXT</td><td></td></tr>
-                        <tr className="border-t"><td className="px-3 py-2">full_name</td><td>TEXT</td><td></td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">avatar_url</td><td>TEXT</td><td></td></tr>
+                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>INT AUTO_INCREMENT</td><td className="text-yellow-600 font-bold">PK</td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">full_name</td><td>VARCHAR(255)</td><td></td></tr>
+                        <tr className="border-t"><td className="px-3 py-2">email</td><td>VARCHAR(255) UNIQUE</td><td></td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">password</td><td>VARCHAR(255)</td><td></td></tr>
+                        <tr className="border-t"><td className="px-3 py-2">role</td><td>ENUM</td><td></td></tr>
+                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">avatar_url</td><td>VARCHAR(500)</td><td></td></tr>
                         <tr className="border-t"><td className="px-3 py-2">created_at</td><td>TIMESTAMP</td><td></td></tr>
                         <tr className="border-t bg-gray-50"><td className="px-3 py-2">updated_at</td><td>TIMESTAMP</td><td></td></tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  {/* User Roles Table */}
-                  <div className="border rounded-lg overflow-hidden">
-                    <div className="bg-green-600 text-white px-4 py-2 font-bold">user_roles</div>
-                    <table className="w-full text-sm">
-                      <thead className="bg-gray-100">
-                        <tr>
-                          <th className="px-3 py-2 text-left">Column</th>
-                          <th className="px-3 py-2 text-left">Type</th>
-                          <th className="px-3 py-2 text-left">Key</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr className="border-t"><td className="px-3 py-2 font-medium">id</td><td>UUID</td><td className="text-yellow-600 font-bold">PK</td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">user_id</td><td>UUID</td><td className="text-blue-600 font-bold">FK</td></tr>
-                        <tr className="border-t"><td className="px-3 py-2">role</td><td>ENUM</td><td></td></tr>
-                        <tr className="border-t bg-gray-50"><td className="px-3 py-2">created_at</td><td>TIMESTAMP</td><td></td></tr>
                       </tbody>
                     </table>
                     <div className="bg-gray-100 px-3 py-2 text-xs">
